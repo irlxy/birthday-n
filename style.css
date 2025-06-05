@@ -1,48 +1,30 @@
-
 body {
-  background-color: #fff0f0;
+  font-family: Arial, sans-serif;
+  background-color: #ffe6f0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  font-family: 'Segoe UI', sans-serif;
-  flex-direction: column;
+  margin: 0;
+}
+
+#container {
   text-align: center;
 }
 
-#countdown {
-  font-size: 48px;
-  color: red;
+#heart {
+  font-size: 80px;
   margin-bottom: 20px;
 }
 
-#heart {
-  font-size: 100px;
-  animation: heartbeat 1s infinite;
-}
-
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.2); }
-  50% { transform: scale(1); }
-  75% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+#countdown {
+  font-size: 30px;
+  color: #ff3399;
+  margin-bottom: 20px;
 }
 
 #message {
-  font-size: 36px;
-  color: #e60073;
-  margin-top: 20px;
-  display: none;
-}
-
-.heart-float {
-  position: absolute;
-  animation: float 3s ease-out forwards;
   font-size: 24px;
-}
-
-@keyframes float {
-  0% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 0; transform: translateY(-200px); }
+  color: #cc0066;
+  margin-top: 20px;
 }
