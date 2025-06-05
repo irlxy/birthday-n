@@ -1,36 +1,22 @@
-
-const countdownEl = document.getElementById('countdown');
-const heartEl = document.getElementById('heart');
-const messageEl = document.getElementById('message');
-
-let timeLeft = 20 * 60; // 20 minutes in seconds
+// حددي تاريخ الميلاد القادم (مثلاً 5 يونيو 2025)
+const birthday = new Date("June 5, 2025 00:00:00").getTime();
+const countdownEl = document.getElementById("countdown");
+const messageEl = document.getElementById("message");
 
 const timer = setInterval(() => {
-  const minutes = Math.floor(timeLeft / 60);
-  const seconds = timeLeft % 60;
+  const now = new Date().getTime();
+  const distance = birthday - now;
 
-  countdownEl.textContent = \`\${minutes}:\${seconds.toString().padStart(2, '0')}\`;
-
-  if (timeLeft <= 0) {
+  if (distance <= 0) {
     clearInterval(timer);
-    countdownEl.style.display = 'none';
-    heartEl.style.fontSize = '60px';
-    showHearts();
-    messageEl.textContent = "🎉 Happy Birthday Nora 🎉";
-    messageEl.style.display = 'block';
-  }
+    countdownEl.style.display = "none";
+    messageEl.innerHTML = "كل عام وأنتِ بخير يا نورة! 🎉🎂<br>أتمنى لكِ يوماً مليئاً بالحب والسعادة 💖";
+  } else {
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  timeLeft--;
+    countdownEl.innerHTML = `${days}ي ${hours}س ${minutes}د ${seconds}ث`;
+  }
 }, 1000);
-
-function showHearts() {
-  for (let i = 0; i < 50; i++) {
-    const heart = document.createElement('div');
-    heart.classList.add('heart-float');
-    heart.textContent = '💖';
-    heart.style.left = \`\${Math.random() * 100}%\`;
-    heart.style.top = '90%';
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 3000);
-  }
-}
